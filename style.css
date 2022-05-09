@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+}
+
+textarea {
+  border: 2px solid #121212;
+  padding: 10px;
+}
+
+.keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 0 auto;
+  padding: 15px;
+  width: 860px;
+  height: 320px;
+  background-color: #7c7c7c;
+  border-radius: 5px;
+}
+
+.key {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #000000;
+  padding: 3px;
+  background-color: #eeeeee;
+  border-radius: 2px;
+  text-align: center;
+}
+
+.key-backspace {
+  width: 100px;
+}
+
+.key-tab, .key-enter, .key-shift, .key-ctrl {
+  width: 80px;
+}
+
+.key-space {
+  width: 400px;
+}
+
+.key-tab, .key-enter, .key-shift, .key-ctrl, .key-backspace, .key-space, .key-up, .key-left, .key-down, .key-right {
+  background-color: #61cb9d;
+}
+
+
+
