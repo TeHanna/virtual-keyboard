@@ -60,7 +60,7 @@ textBottom.innerHTML = 'Клавиатура создана в операцио�
 wrapper.appendChild(textBottom);
 
 document.addEventListener('click', function(event) {
-  event.preventDefault();
+  
   if(event.target.classList.contains('key')){
     let letter = event.target.innerHTML;
     textarea.innerHTML += letter;
@@ -70,6 +70,14 @@ document.addEventListener('click', function(event) {
     }), 350)
     event.target.classList.add('active')
   }
+})
+
+document.addEventListener('keydown', (e) =>  {
+ 
+  document.querySelector(`.key[data-code="${e.code}"]`).classList.add('active')
+    setTimeout(() => document.querySelectorAll('.key').forEach(function(elem) {
+      elem.classList.remove('active')
+    }), 350)
 })
 
 
