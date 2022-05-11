@@ -11,6 +11,7 @@ wrapper.appendChild(textTitle);
 
 const textarea = document.createElement('textarea');
 wrapper.appendChild(textarea);
+textarea.classList.add('textarea');
 textarea.setAttribute('rows', '8');
 textarea.setAttribute('cols', '100')
 
@@ -59,27 +60,63 @@ textBottom.classList.add('text-bottom');
 textBottom.innerHTML = 'Клавиатура создана в операционной системе Windows<br>Для переключения языка комбинация: левыe ctrl + alt';
 wrapper.appendChild(textBottom);
 
-document.addEventListener('click', function(event) {
-  
-  if(event.target.classList.contains('key')){
-    let letter = event.target.innerHTML;
-    textarea.innerHTML += letter;
 
+const clickOnKeyboard = () => {
+  const textView = document.querySelector('.textarea');
+  const keys = document.querySelectorAll('.key');
+  window.addEventListener('click', e => {
+    
+    document.querySelector(`.key[data-code="${e.target.dataset.code}"]`).classList.add('active')
     setTimeout(() => document.querySelectorAll('.key').forEach(function(el) {
-      el.classList.remove('active')
-    }), 350)
-    event.target.classList.add('active')
-  }
-})
+    el.classList.remove('active') 
+  }), 200)
 
-document.addEventListener('keydown', (e) =>  {
- 
+    for (let i = 0; i < keys.length; i++) {
+      console.log(e.target.dataset.code)
+      if (e.target.dataset.code === 'Tab') {
+        textView.value += '    ';
+        break;
+      }
+
+      if (e.target.dataset.code === 'Space') {
+        textView.value += ' ';
+        break;
+      }
+
+      if (e.target.dataset.code === 'Enter') {
+        textView.value += '\n';
+        break;
+      }
+
+      if (e.target.dataset.code === 'Backspace') {
+        textView.value = textView.value.substring(0, textView.value.length - 1);
+        break;
+      }
+
+      if (e.target.dataset.code === 'Delete') {
+        textView.value = textView.value.substring(0, textView.value.length - 1);
+        break;
+      }
+
+      if (e.target.dataset.code) {
+        textView.value += e.target.textContent;
+        break;
+      }
+
+    }
+    
+  });
+};
+
+clickOnKeyboard();
+
+document.addEventListener('keydown', function (e) {
+  textarea.focus();
+  //console.log(e.key);
   document.querySelector(`.key[data-code="${e.code}"]`).classList.add('active')
-    setTimeout(() => document.querySelectorAll('.key').forEach(function(elem) {
-      elem.classList.remove('active')
-    }), 350)
+      setTimeout(() => document.querySelectorAll('.key').forEach(function(elem) {
+      elem.classList.remove('active') 
+    }), 200)
 })
 
 
-
-//console.log(buttons[2].codeKey) // 2
