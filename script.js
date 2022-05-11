@@ -24,6 +24,7 @@ class Button {
     this.item = item[i].en;
     this.ru = item[i].ru;
     this.shift = item[i].shift;
+    this.codeKey = item[i].codeKey;
   }
 }
 
@@ -34,6 +35,7 @@ for (i = 0; i < buttons.length; i++) {
   let key = document.createElement('div');
   keyboard.appendChild(key);
   key.innerHTML = newButton.item;
+  key.setAttribute('data-code', newButton.codeKey)
 
   if (newButton.item == 'Backspace' || newButton.item == 'CapsLock') {
     key.classList.add('key-long');
@@ -57,4 +59,27 @@ textBottom.classList.add('text-bottom');
 textBottom.innerHTML = 'Клавиатура создана в операционной системе Windows<br>Для переключения языка комбинация: левыe ctrl + alt';
 wrapper.appendChild(textBottom);
 
+document.addEventListener('click', function(event) {
+  
+  if(event.target.classList.contains('key')){
+    let letter = event.target.innerHTML;
+    textarea.innerHTML += letter;
 
+    setTimeout(() => document.querySelectorAll('.key').forEach(function(el) {
+      el.classList.remove('active')
+    }), 350)
+    event.target.classList.add('active')
+  }
+})
+
+document.addEventListener('keydown', (e) =>  {
+ 
+  document.querySelector(`.key[data-code="${e.code}"]`).classList.add('active')
+    setTimeout(() => document.querySelectorAll('.key').forEach(function(elem) {
+      elem.classList.remove('active')
+    }), 350)
+})
+
+
+
+//console.log(buttons[2].codeKey) // 2

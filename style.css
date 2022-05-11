@@ -93,5 +93,7 @@ textarea {
   font-weight: bold;
 }
 
-
+.active {
+  background-color: #75c0f2;
+}
 
