@@ -83,6 +83,11 @@ const clickOnKeyboard = () => {
         break;
       }
 
+      if (e.target.dataset.code === 'ShiftRight' || e.target.dataset.code === 'AltRight' || e.target.dataset.code === 'CtrlRight' || e.target.dataset.code === 'AltLeft' || e.target.dataset.code === 'CtrlLeft' || e.target.dataset.code === 'ShiftLeft' || e.target.dataset.code === 'CapsLock') {
+        textView.value += '';
+        break;
+      }
+
       if (e.target.dataset.code === 'Enter') {
         textView.value += '\n';
         break;
@@ -114,6 +119,7 @@ document.addEventListener('keydown', function (e) {
   textarea.focus();
   //console.log(e.key);
   document.querySelector(`.key[data-code="${e.code}"]`).classList.add('active')
+  console.log(document.querySelector(`.key[data-code="${e.code}"]`))
       setTimeout(() => document.querySelectorAll('.key').forEach(function(elem) {
       elem.classList.remove('active') 
     }), 200)

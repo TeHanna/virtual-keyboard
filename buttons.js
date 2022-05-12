@@ -165,7 +165,7 @@ const buttons = [
     codeKey: 'ShiftRight', en: 'Shift', ru: 'Shift', shift: 'Shift',
   },
   {
-    codeKey: 'CtrllLeft', en: 'Ctrl', ru: 'Ctrl', shift: 'Ctrl',
+    codeKey: 'CtrlLeft', en: 'Ctrl', ru: 'Ctrl', shift: 'Ctrl',
   },
   {
     codeKey: 'AltLeft', en: 'Alt', ru: 'Alt', shift: 'Alt',
